@@ -6,7 +6,7 @@ body {
 
 #main-header {
   background-color: white;
-  color: #a70184;
+  color: black;
   padding: 5px 0; /* top&down left&right */
   margin: 20px 5% 20px 5%; /* top right down left */
 }
@@ -22,5 +22,248 @@ body {
   border: 2px solid black; 
   list-style-position: inside; /* moves the bullet point inside the element */
   margin-right: 40px; /* same as native left separation for bullet point */
+}
+
+/* SELECTORES AVANZADOS */
+
+#main-header h1 span {
+  color: #a70184;
+}
+
+#main-header > span {
+  /* busca los spans que son directamente decendientes de el header */
+  text-decoration: underline;
+  font-size: 20px;
+}
+
+/* #brands ul li:first-child {
+  background-color: #fdcef4;
+} */
+
+#brands ul li:nth-child(odd) {
+  background-color: #fdcef4;
+}
+
+/* .games-container div:nth-child(odd) {
+  background-color: green;
+} */
+
+
+/* PSEUDO CLASES Y PSEUDO ELEMENTOS */
+
+#access-buttons button {
+  width: 50px;
+  height: 50px;
+  border-radius: 0 10px 15px 25px;
+}
+
+#access-buttons button:hover {
+  background-color: #a70184;
+  font-weight: bold;
+}
+
+#access-buttons button:active {
+  background-color: orange;
+}
+
+#brands ul li:hover {
+  background-color: orange;
+}
+
+#brands ul li::marker {
+  /* marker son los bullet points de un listado */
+  color: #a70184;
+  font-size: 20px;
+  content: "👾 ";
+}
+
+li {
+  font-size: 20px;
+}
+
+#brands ul li::first-letter {
+  /* font-size: 22px; */
+  font-size: 1.5em; /* 150% del tamaño original de el li */
+  font-weight: bold;
+  color: #a70184;
+}
+
+#brands ul li {
+  text-align: start;
+  padding-left: 50px;
+}
+
+#brands ul li:hover::after {
+  content: " BLACK FRIDAY SALE";
+}
+
+
+/* FLEXBOX */
+
+#access-buttons {
+  /* FLEXBOX SE LE DA ES AL CONTENEDOR QUE TIENE TODOS LOS ELEMENTOS QUE QUEREMOS ORDENAR */
+  display: flex;
+  justify-content: space-evenly;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+section {
+  background-color: darkgray;
+}
+
+section h2 {
+  background-color: rgb(71, 71, 71);
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.games-container div {
+  background-color: #55595c;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  height: 400px;
+  width: 200px;
+
+  display: flex;
+  flex-direction: column;
+  /* si flex direcion es row: J.C. es horizontal y A.I. es vertical */
+  /* si flex direcion es column: J.C. es vertical y A.I. es horizontal */
+  align-items: center;
+  justify-content: space-evenly
+} 
+
+.games-container {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+
+  /* con flex tenemos un propiedad llamada gap que separa proporcionalmente todos los elementos dentro del contenedor */
+  gap: 25px
+}
+
+.games-container div:hover {
+  flex-grow: 1;
+}
+
+/* EXTRA transiciones (animaciones en CSS) */
+
+.games-container div {
+  transition: flex-grow 0.3s;
+}
+
+.games-container div img:hover {
+  height: 200px;
+  width: 140px;
+}
+
+.games-container div img {
+  transition: 0.2s;
+  /* si no le indicamos nada a la transicion, aplica para todo */
+}
+
+
+/* POSICIONAMIENTO CSS */
+
+#access-buttons {
+  background-color: black;
+  position: sticky;
+  top: 0px;
+}
+
+#access-buttons button:hover {
+  position: relative;
+  top: 5px;
+}
+
+
+/* media queries indica que Estilos especificos yo voy a aplicar para los diferentes tamaños de dispositivos de clientes */
+
+
+/* asumimos que TODOS los estilos que yo tengo hasta este punto son para un tipo de dispositivo. MOBILE. Tambien aplicarian para todo lo demas. */
+
+
+/* aplicar estilos especificos para algunas mas grandes */
+
+
+#game-section-switch {
+  display: flex;
+  flex-direction: column;
+}
+
+html {
+  font-size: 16px; /* 16px es el valor predeterminado */
+}
+
+h1 {
+  font-size: 3rem; /* 12*3=36*/
+}
+
+p, button span {
+  font-size: 1rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+}
+
+h4 {
+  font-size: 1.3rem;
+}
+
+
+
+/* TABLETS */
+@media ( min-width: 760px ) {
+
+  /* aqui solo los cambios para tables o mas grande */
+  body {
+    background-color: aquamarine;
+  }
+
+  #access-buttons button {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+  }
+
+  #access-buttons {
+    justify-content: center;
+    gap: 10px;
+  }
+
+  html {
+    font-size: 24px;
+  }
+
+}
+
+/* PORTATILES Y PC */
+
+@media (min-width: 1080px) {
+
+  body {
+    background-color: lightgreen;
+  }
+
+  #access-buttons button {
+    width: 50px;
+    height: 50px;
+    border-radius: 0 10px 15px 25px;
+  }
+
+  #access-buttons {
+    justify-content: space-evenly;
+    gap: auto; /* vuelve al valor predeterminado */
+  }
+
+  #game-section-switch {
+    flex-direction: row;
+  }
+
+  html {
+    font-size: 20px;
+  }
+
 }
 
